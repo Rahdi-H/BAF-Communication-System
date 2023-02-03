@@ -1,0 +1,14 @@
+{% extends 'unit/base.html' %}
+{% block title %} HOME {% endblock %}
+{% block main %}
+    <section>
+        <div class="text-center m-5 p-2">
+            <h1>BAF {{request.user}}</h1>
+            <h2>Signal Centre</h2>
+        </div>
+        <div class="container w-50 text-center rounded d-flex justify-content-center align-items-center shadow" style="height:200px;">
+            <a href="{% url 'in-los' %}" class="btn btn-success btn-lg m-2" >IN LOS</a>
+            <a href="{% url 'out-los' %}" class="btn btn-success btn-lg m-2" >OUT LOS</a>
+        </div>
+    </section>
+{% endblock %}

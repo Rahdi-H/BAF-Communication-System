@@ -1,0 +1,45 @@
+{% extends 'unit/base.html' %}
+{% block title %} OUT LOS {% endblock %}
+{% block outlosactive %}active{% endblock %}
+{% block main %}
+    <div class="row d-flex justify-content-around rounded p-2 text-center m-2">
+        <h2>{{request.user}} OUT LOS</h2>
+        <div class="">
+          <a class="btn btn-success btn-sm" href="{% url 'los-add' %}">Add</a>
+        </div>
+    </div>
+    <section class="p-2 m-2 rounded shadow">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Ser</th>
+                <th scope="col">Ref</th>
+                <th scope="col">Originator</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Receiver Base/Unit</th>
+                <th scope="col">Receiver Sections</th>
+                <th scope="col">Receiving time</th>
+                <th scope="col">Sending time</th>
+                <th scope="col">File</th>
+                <th scope="col">Action Taken By</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+              <tr>
+                <th scope="row">{{message.serial}}</th>
+                <td><a href="{% url 'los-update' message.id %}">{{message.ref}}</a></td>
+                <td>{{message.originator}}</td>
+                <td>{{message.sender}}</td>
+                <td>{{message.written_by}}</td>
+                <td>{{message.main_receiver}}</td>
+                <td>{{message.date_of_rec}}, {{message.time_of_rec}}</td>
+                <td>{{message.datetime_of_action}}</td>
+                <td><a href="{{message.file.url}}" target="_blank" class="btn btn-success btn-sm">File</a></td>
+                <td>{{message.action_taken_by}}</td>
+              </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </section>
+{% endblock %}

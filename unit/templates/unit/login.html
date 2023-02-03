@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'unit/css/bootstrap.min.css' %}">
+    <title>Login</title>
+    <style>
+        html{
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="h-100">
+    <section class="container d-flex justify-content-center h-100">
+        <div class="w-50 p-5 shadow-lg my-auto rounded">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+            {% endif %}
+            <div class="text-center">
+                <img src="{% static 'unit/images/baf.png' %}" height="80px" alt="">
+                <h3>BAF SIGNAL CENTRE</h3>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" id="username" class="form-control m-2" placeholder="Username">
+                <input type="password" name="password" id="password" class="form-control m-2" placeholder="Password">
+                <input type="submit" value="Login" class="form-control btn btn-success m-2" >
+            </form>
+        </div>
+    </section>
+
+    <script src="{% static 'unit/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
+    
